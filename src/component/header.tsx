@@ -11,7 +11,7 @@ const Header: FC = React.memo(() => {
   const { allTheme } = useTheme();
   const location = useLocation();
   const [change] = useChangeTheme();
-  const newPath = location.pathname == "/draw"?
+  const newPath = location.pathname === "/draw"?
   {
     path:'/',text:'Home',
   }:
@@ -28,7 +28,7 @@ const Header: FC = React.memo(() => {
       <button className='py-1 px-2 rounded-md' onClick={change}>
           {allTheme.textColor==="white"?<MdOutlineWbSunny size={22} />:<MdDarkMode size={22}/>}
         </button>
-        <Link className={`flex items-center border py-1 px-2 rounded-md ${allTheme.textColor=="white"&&'border-[#49494d] '}`}
+        <Link className={`flex items-center border py-1 px-2 rounded-md ${allTheme.textColor==="white"&&'border-[#49494d] '}`}
           to={newPath.path}>
           {
             newPath.text

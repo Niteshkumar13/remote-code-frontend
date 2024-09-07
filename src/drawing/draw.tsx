@@ -1,4 +1,4 @@
-import {Tldraw,Editor,TldrawSelectionForeground} from 'tldraw';
+import {Tldraw,Editor} from 'tldraw';
 import 'tldraw/tldraw.css';
 import { useState } from 'react';
 const CustomPreferences = () => {
@@ -10,7 +10,7 @@ const CustomPreferences = () => {
     );
   };
 const Draw = () => {
-    const [editor, setEditor] = useState<Editor | null>(null);
+    // const [editor, setEditor] = useState<Editor | null>(null);
    window.addEventListener("keydown",(e: KeyboardEvent)=>{
     if (e.ctrlKey && e.key === '/') {
         console.log('Ctrl + / was pressed.');
@@ -22,7 +22,7 @@ const Draw = () => {
         <div className='w-screen h-[calc(100vh-3rem)] mt-12 fixed inset-0'>
             <Tldraw
                 defaultName="Editor"
-                onMount={(editor) => setEditor(editor)}
+                // onMount={(editor) => setEditor(editor)}
                 className="z-0"
                 components={{ DebugPanel: null}}
                 persistenceKey="code-editor-key-for-db"

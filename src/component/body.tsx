@@ -22,7 +22,7 @@ const Body: React.FC<BodyProps> = ({ enableSetting })=> {
     setShowSlide(false)
     setLan({ ...lan, language: e.target.value, snippet: def_code[e.target.value], Output: { language: '', output: '' } })
   }
-  const deicideborder = allTheme.textColor =="white" && 'border-[#49494d] '
+  const deicideborder = allTheme.textColor === "white" && 'border-[#49494d] '
   return (
     <>
 

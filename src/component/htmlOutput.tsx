@@ -1,9 +1,6 @@
-import React from 'react'
 import { useLanguage } from '../context/selectLanguage';
-import { useTheme } from '../context/themeContext';
 const HtmlOutput = () => {
     const { lan } = useLanguage();
-    const { allTheme } = useTheme()
     return (
         <div className='h-full w-full'>
             <div className="flex bg-[#38444d] py-1 gap-4">
