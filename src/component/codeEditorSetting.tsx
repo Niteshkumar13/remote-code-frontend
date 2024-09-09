@@ -23,7 +23,7 @@ const CodeEditorSetting = memo(({ editData, setEditData, updateThedata, toggleOp
             <div className='flex flex-wrap flex-col items-start px-2 py-2  max-sm:w-full gap-3'>
                 <div className='flex max-w-[80%] gap-9  items-center '>
                     <label className='text-lg leading-none '>Font family</label>
-                    <select className=" rounded-md border-none px-4  outline-blue-500 py-[3px] text-black  outline-none" name="fontfamily" onChange={e => setEditData({ ...editData, [e.target.name]: e.target.value })}>
+                    <select className=" rounded-md border-none px-4   py-[3px] text-black  outline-none" name="fontfamily" onChange={e => setEditData({ ...editData, [e.target.name]: e.target.value })}>
                         {
                             family.map((item, index) => <option key={index} value={item} style={{ fontFamily: item,fontSize:12 }}>{item
                             }</option>)
