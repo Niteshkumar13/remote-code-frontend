@@ -1,42 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from '../context/themeContext';
 import Editors from './editor';
 import { useCodeRunner } from '../module/runCode';
-import { PiFiles } from "react-icons/pi";
+import { FaFileArrowUp } from "react-icons/fa6";
 import { useLanguage, def_code } from '../context/selectLanguage';
-import Slider from './slider';
 import Output, { Inputbox } from './output';
 import { TailSpin } from 'react-loading-icons'
 import HtmlOutput from './htmlOutput';
 import { CiSettings } from 'react-icons/ci';
+import { ReadFile } from '../module/readfile';
 interface BodyProps {
   enableSetting: React.MouseEventHandler;
 }
 const Body: React.FC<BodyProps> = ({ enableSetting })=> {
   const { allTheme } = useTheme();
-  const [showSlide, setShowSlide] = useState<boolean>(false)
+  const {ReadContent} = ReadFile()
   const { lan, setLan } = useLanguage()
   const { runTheCode, isloading, setLoading } = useCodeRunner();
   const changeLan = (e: any): void => {
     setLoading(false)
-    setShowSlide(false)
     setLan({ ...lan, language: e.target.value, snippet: def_code[e.target.value], Output: { language: '', output: '' } })
   }
   const deicideborder = allTheme.textColor === "white" && 'border-[#49494d] '
   return (
-    <>
-
-      {showSlide && <div className='absolute w-screen h-[calc(100vh-5.25rem)] z-[2] left-0 top-[5.25rem] overflow-hidden flex flex-row-reverse'>
-        <div className='w-[calc(100vw-270px)] h-full' onClick={e => setShowSlide(false)}></div>
-        <div className='w-[270px] h-full'><Slider /></div>
-      </div>}
       <section className='h-full w-screen mt-12'>
         <div className='h-9 flex items-center justify-between px-2 md:px-5 gap-1 border-b' style={{ backgroundColor: allTheme.body,color:'#2a67b1' }}>
           <div className='h-full py-1 flex items-center gap-1'>
-            <button className={`h-auto py-0.5 px-2 border rounded-sm ${deicideborder} `} onClick={e => setShowSlide(!showSlide)}>
-              <PiFiles size={22} />
+            <button className={`h-auto py-0.5 px-2 border rounded-sm ${deicideborder}`}>
+              <label htmlFor='file-input' className='flex gap-1 items-center cursor-pointer'><FaFileArrowUp size={22}/></label>
             </button>
-            {lan.language !== "html" && <button onClick={e => { runTheCode(); setShowSlide(false) }} className='px-6 h-auto py-0.5 rounded-sm bg-[#2a67b1] text-white'>
+            <input type='file' id="file-input" className='hidden'  accept=".js,.ts,.py,.c,.cpp,.java"  onChange={ReadContent}/>
+            {lan.language !== "html" && <button onClick={e => { runTheCode()}} className='px-6 h-auto py-0.5 rounded-sm bg-[#2a67b1] text-white'>
               {isloading ? <TailSpin width="23px" height="23px" /> : 'Run'}
             </button>}
           </div>
@@ -62,7 +56,6 @@ const Body: React.FC<BodyProps> = ({ enableSetting })=> {
           </div>
         </div>
       </section>
-    </>
   )
 }
 

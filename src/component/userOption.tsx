@@ -34,7 +34,6 @@ export const TopOption: FC<{ setShowOption: () => void}> = memo(({ setShowOption
           </li>
         </Link>
       ))}
-
       </ul>
     </div>
   );
