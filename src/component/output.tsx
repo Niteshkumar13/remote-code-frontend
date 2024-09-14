@@ -7,7 +7,7 @@ const Output = () => {
   const { lan } = useLanguage()
   const decide = allTheme.body === "white" ? { bordercol: 'border-slate-300', bg: "rgb(3,105,161,1)" } : { bordercol: 'border-slate-700', bg: "#2c2e35" }
   return (
-    <div className='w-full pt-2 h-[calc(100vh-264px)] max-md:w-1/2'>
+    <div className='w-full pt-2 h-[calc(100vh-264px)] max-sm:h-full max-md:w-1/2'>
       <div className='h-[28px] pl-2 select-none' style={{ color: allTheme.textColor }}><span>Output</span></div>
       <textarea value={lan.Output.output} readOnly className={`w-full h-[calc(100%-28px)] overflow-y outline-none border-2 ${decide.bordercol} resize-none p-2 rounded-md`} style={{ color: allTheme.textColor, fontFamily: codeStyles.fontfamily, background: allTheme.output }}></textarea>
     </div>
